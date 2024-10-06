@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "59dd956f-09ab-42d0-b615-17350fa4a373",
+		"name": "OneSys",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37656541"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Dummy\",\r\n    \"password\": \"123\",\r\n    \"firstName\": \"Tester\",\r\n    \"lastName\": \"Tester\",\r\n    \"email\": \"Tester@example.com\",\r\n    \"roleId\":{\"id\":2}\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Tester\",\r\n    \"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":3,\r\n    \"username\": \"Dummy\",\r\n    \"firstName\": \"Dummmy\",\r\n    \"lastName\": \"Pummy\",\r\n    \"email\": \"OneSys@example.com\",\r\n    \"roleId\":{\"id\":2}\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/user/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/user/get-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"get-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUaGVudSIsInJvbGVJZCI6MSwiZXhwIjoxNzI4MjYzNjg0LCJpYXQiOjE3MjgyMjc2ODR9.fAOxMKLVORA-y57kZ0w2HG_KvwAWNmcRrJh4aj1hJKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Admin\",\r\n    \"lastName\": \"User\",\r\n    \"address\": \"User\",\r\n    \"contactNumber\": \"User\",\r\n    \"email\": \"admin@example.com\",\r\n    \"dateOfBirth\": \"1999-03-27\",\r\n    \"gender\": \"Male\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/employee/store",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"employee",
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Employees",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUaGVudSIsInJvbGVJZCI6MSwiZXhwIjoxNzI4MjYzNjg0LCJpYXQiOjE3MjgyMjc2ODR9.fAOxMKLVORA-y57kZ0w2HG_KvwAWNmcRrJh4aj1hJKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/employee/get-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"employee",
+						"get-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUaGVudSIsInJvbGVJZCI6MSwiZXhwIjoxNzI4MjYzNjg0LCJpYXQiOjE3MjgyMjc2ODR9.fAOxMKLVORA-y57kZ0w2HG_KvwAWNmcRrJh4aj1hJKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"firstName\": \"Thenuja\",\r\n    \"lastName\": \"Uthayakumar\",\r\n    \"address\": \"Jaffna\",\r\n    \"contactNumber\": \"0761234563\",\r\n    \"email\": \"thenu@example.com\",\r\n    \"dateOfBirth\": \"1999-03-27\",\r\n    \"gender\": \"Female\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/employee/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"employee",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Employee Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUaGVudSIsInJvbGVJZCI6MSwiZXhwIjoxNzI4MjYzNjg0LCJpYXQiOjE3MjgyMjc2ODR9.fAOxMKLVORA-y57kZ0w2HG_KvwAWNmcRrJh4aj1hJKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/tamiz/Downloads/HD3.jpeg"
+						},
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/employee/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"employee",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Employee Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUaGVudSIsInJvbGVJZCI6MSwiZXhwIjoxNzI4MjYzNjg0LCJpYXQiOjE3MjgyMjc2ODR9.fAOxMKLVORA-y57kZ0w2HG_KvwAWNmcRrJh4aj1hJKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/employee/3/download-profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"employee",
+						"3",
+						"download-profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download All Employee Records",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUaGVudSIsInJvbGVJZCI6MSwiZXhwIjoxNzI4MjYzNjg0LCJpYXQiOjE3MjgyMjc2ODR9.fAOxMKLVORA-y57kZ0w2HG_KvwAWNmcRrJh4aj1hJKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/employee/download",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"employee",
+						"download"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUaGVudSIsInJvbGVJZCI6MSwiZXhwIjoxNzI4MjYzNjg0LCJpYXQiOjE3MjgyMjc2ODR9.fAOxMKLVORA-y57kZ0w2HG_KvwAWNmcRrJh4aj1hJKk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/employee/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"employee",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
