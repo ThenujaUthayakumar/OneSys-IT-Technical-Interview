@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LoggedInUser {
+
     @Autowired
     private JwtUtil jwtUtil;
 
@@ -22,6 +23,7 @@ public class LoggedInUser {
             }
             System.out.println("Processing Token: " + token);
 
+            // Extract username from the token
             String username = jwtUtil.extractUsername(token);
             UserEntity userEntity = userRepository.findByUsername(username);
 
@@ -29,7 +31,8 @@ public class LoggedInUser {
                 throw new SecurityException("User not found!");
             }
 
-            if (!jwtUtil.validateToken(token, userEntity.getUsername())) {
+            Integer roleId = userEntity.getRoleId().getId();
+            if (!jwtUtil.validateToken(token, userEntity.getUsername(), roleId)) {
                 throw new SecurityException("Invalid token!");
             }
 
@@ -41,5 +44,4 @@ public class LoggedInUser {
             throw new SecurityException("Token is malformed or invalid: " + token, e);
         }
     }
-
 }
