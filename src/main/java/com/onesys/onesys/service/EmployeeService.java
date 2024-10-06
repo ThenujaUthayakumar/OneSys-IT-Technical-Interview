@@ -322,25 +322,23 @@ public class EmployeeService {
     /*--------------------- EMPLOYEE DELETE -----------------------*/
     public String deleteEmployee(Integer id, String token) {
         System.out.println("Token Received: " + token);
-        UserEntity currentUser = loggedInUser.validateToken(token);
-        System.out.println("User Retrieved: " + currentUser.getUsername() + ", Role ID: " + currentUser.getRoleId());
 
-//        if (!currentUser.getRoleId().equals(1)) {
-//            throw new SecurityException("Access denied: You do not have permission to delete an employee record!");
-//        }
-        if (!Integer.valueOf(1).equals(currentUser.getRoleId())) {
+        UserEntity currentUser = loggedInUser.validateToken(token);
+        System.out.println("User Retrieved: " + currentUser.getUsername() + ", Role ID: " + currentUser.getRoleId().getId());
+
+        if (!currentUser.getRoleId().getId().equals(1)) {
             throw new SecurityException("Access denied: You do not have permission to delete an employee record!");
         }
-
 
         if (!employeeRepository.existsById(id)) {
             throw new SecurityException("Employee not found with id: " + id);
         }
 
-        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).orElseThrow(() ->
+                new SecurityException("Employee not found with id: " + id)
+        );
         employeeRepository.delete(employeeEntity);
 
         return "Employee record deleted successfully!";
     }
-
 }
