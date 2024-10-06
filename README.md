@@ -1,1 +1,0 @@
-# OneSys-IT-Technical-Interview
